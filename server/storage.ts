@@ -113,22 +113,20 @@ export class DatabaseStorage implements IStorage {
   }
 
   async getUserTransactions(userId: string, options: { type?: string; status?: string; limit: number; offset: number }): Promise<Transaction[]> {
-    let query = db.select().from(transactions);
+    let conditions = [eq(transactions.userId, userId)];
     
-    // Base condition
-    query = query.where(eq(transactions.userId, userId));
-    
-    // Add type filter if provided
     if (options.type) {
-      query = query.where(eq(transactions.type, options.type));
+      conditions.push(eq(transactions.type, options.type));
     }
     
-    // Add status filter if provided
     if (options.status) {
-      query = query.where(eq(transactions.status, options.status));
+      conditions.push(eq(transactions.status, options.status));
     }
     
-    return await query
+    return await db
+      .select()
+      .from(transactions)
+      .where(and(...conditions))
       .limit(options.limit)
       .offset(options.offset)
       .orderBy(desc(transactions.createdAt));
