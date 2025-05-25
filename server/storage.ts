@@ -69,15 +69,18 @@ export class DatabaseStorage implements IStorage {
   }
 
   async getAllUsers(options: { search?: string; limit: number; offset: number }): Promise<User[]> {
-    let query = db.select().from(users);
+    let conditions = [];
     
     if (options.search) {
-      query = query.where(
+      conditions.push(
         sql`${users.email} ILIKE ${'%' + options.search + '%'} OR ${users.firstName} ILIKE ${'%' + options.search + '%'} OR ${users.lastName} ILIKE ${'%' + options.search + '%'}`
       );
     }
     
-    return await query
+    return await db
+      .select()
+      .from(users)
+      .where(conditions.length > 0 ? and(...conditions) : undefined)
       .limit(options.limit)
       .offset(options.offset)
       .orderBy(desc(users.createdAt));
