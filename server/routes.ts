@@ -124,6 +124,39 @@ export async function registerRoutes(app: Express): Promise<Server> {
     }
   });
 
+  // Process earning (complete task)
+  app.post('/api/earning', isAuthenticated, async (req: any, res) => {
+    try {
+      const userId = req.user.claims.sub;
+      const { taskId, amount, description } = req.body;
+      
+      if (!taskId || !amount || amount <= 0) {
+        return res.status(400).json({ message: "Invalid task completion data" });
+      }
+      
+      const transaction = await storage.createTransaction({
+        userId,
+        type: 'earning',
+        amount: amount.toString(),
+        status: 'completed',
+        method: 'task_completion',
+        description: description || `Task #${taskId} completed`,
+      });
+
+      // Update user balance immediately for earnings
+      await storage.updateUserBalance(userId, amount);
+      
+      res.json({ 
+        message: 'Task completed successfully',
+        transaction,
+        earned: amount
+      });
+    } catch (error) {
+      console.error("Error processing earning:", error);
+      res.status(500).json({ message: "Failed to process earning" });
+    }
+  });
+
   // Admin routes
   app.get('/api/admin/stats', isAuthenticated, async (req: any, res) => {
     try {

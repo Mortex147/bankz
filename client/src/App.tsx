@@ -8,6 +8,8 @@ import { useAuth } from "@/hooks/useAuth";
 import Landing from "@/pages/landing";
 import Dashboard from "@/pages/dashboard";
 import AdminDashboard from "@/pages/admin-dashboard";
+import TransactionsPage from "@/pages/transactions";
+import EarningsPage from "@/pages/earnings";
 import NotFound from "@/pages/not-found";
 
 function Router() {
@@ -22,8 +24,8 @@ function Router() {
           <Route path="/" component={Dashboard} />
           <Route path="/admin" component={AdminDashboard} />
           <Route path="/dashboard" component={Dashboard} />
-          <Route path="/transactions" component={Dashboard} />
-          <Route path="/earnings" component={Dashboard} />
+          <Route path="/transactions" component={TransactionsPage} />
+          <Route path="/earnings" component={EarningsPage} />
         </>
       )}
       <Route component={NotFound} />
