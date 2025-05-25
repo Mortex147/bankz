@@ -1,0 +1,120 @@
+Here's a polished **Product Requirements Document (PRD)** for an **AI-Powered Web Application Developer Assistant**, designed to be **tech-stack agnostic** but specifying **shadcn/ui** for UI components. The goal is for the assistant to **fully** support the development of an earning website within a short timeframe using AI tools.
+
+---
+
+# 🧠 AI Coding Assistant PRD – “SmartDev”
+
+## 📌 Summary
+
+**SmartDev** is an AI-Powered Coding Assistant designed to help developers rapidly create fully functional earning websites using modern AI tools (e.g., Replit, Bolt, Cursor). The assistant should provide full-stack support, smart automation, and seamless integration guidance. The core requirement is the delivery of a **production-ready earning platform** in **2–3 days** with maximum efficiency and minimal manual coding, using AI wherever possible.
+
+The assistant should fully understand project goals, infer missing details, and complete the build end-to-end — including UI, backend, logic, and security — **without shortcuts**.
+
+---
+
+## 🎯 Goals
+
+* Accelerate web development using AI-assisted workflows
+* Ensure full functionality and completeness (no missing features or stubs)
+* Abstract away manual configuration where possible
+* Deliver high-quality, responsive, and secure applications
+* Be usable by developers of all experience levels
+
+---
+
+## 🧩 Functional Requirements
+
+### 1. **User Management**
+
+* Account creation with email/password or social login
+* Login/logout/session management
+* Forgot password and reset flow
+* Basic profile management (username, email, etc.)
+
+### 2. **Wallet System**
+
+* Display current balance
+* Deposit function with simulated or real payment options (based on integration)
+* Withdrawal function with status tracking
+* Transaction history (deposits, withdrawals, and balance changes)
+
+### 3. **Admin Dashboard**
+
+* View/manage user accounts
+* View all transactions (filterable by type, status, user)
+* Approve/reject withdrawals (if manual)
+* Suspend/reactivate user accounts
+* Dashboard metrics (total users, active users, total deposits/withdrawals)
+
+### 4. **User Interface**
+
+* Clean, modern UI using **shadcn/ui**
+* Dark/light mode toggle
+* Consistent styling across pages
+* Responsive design for desktop and mobile
+* Friendly loading and error states
+
+### 5. **Performance**
+
+* Fast initial load time (≤1.5s)
+* Optimized API calls and minimal client-side payload
+* Lazy loading where applicable
+
+### 6. **Security**
+
+* Input validation and sanitization
+* Basic protection from XSS/CSRF/SQL Injection
+* Secure password hashing (bcrypt or similar)
+* Role-based access control (admin vs. user)
+* Rate limiting for login and sensitive endpoints
+
+---
+
+## 🛠 AI Integration Features
+
+The assistant **must**:
+
+* Use Replit, Bolt, Cursor, or equivalent tools
+* Automatically scaffold the project (folders, config, env)
+* Suggest or auto-write optimized code snippets
+* Fix bugs and explain changes when prompted
+* Generate complete database schemas and models
+* Generate responsive UI code using **shadcn/ui**
+* Offer a pre-configured auth system template
+* Provide step-by-step guidance if manual steps are needed
+* Propose test cases for key functionality
+
+---
+
+## 🔧 Non-Functional Requirements
+
+* **Start time**: Immediately after prompt
+* **Availability**: Continuous assistance until completion
+* **Completion time**: ≤72 hours from initiation
+* **Scalability**: Initial version must support at least 100 concurrent users
+* **Documentation**: Auto-generate README with setup, config, and deployment steps
+
+---
+
+## 🧪 Acceptance Criteria
+
+* ✅ Working deployment of a responsive earning platform
+* ✅ All features implemented as per the above list
+* ✅ No placeholder elements or incomplete features
+* ✅ Shadcn/ui used across all interface components
+* ✅ Admin and user flows fully tested
+* ✅ Clear walkthrough or checklist provided for deployment
+
+---
+
+## 📦 Deliverables
+
+* Fully functional codebase (frontend + backend)
+* Admin and user panel
+* Local + hosted working versions (if applicable)
+* README with instructions
+* Optional: Figma or component map (auto-generated if possible)
+
+---
+
+Let me know if you'd like this exported as a Notion doc, Google Doc, or integrated into a dev tool like Linear or Trello.
